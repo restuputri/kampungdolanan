@@ -5,22 +5,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kampung Dolanan Sains</title>
+  <!-- Font Ramah Anak (Nunito: bulat, jelas, dan mudah dieja oleh siswa SD) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   <style>
     /* =========================================================
-       1. VARIABEL WARNA & PENGATURAN DASAR (MUDAH DIEDIT)
+       1. VARIABEL WARNA & UKURAN FONT RAMAH ANAK (MUDAH DIEDIT)
        ========================================================= */
     :root {
-      --ink: #173e39;
+      --ink: #143632;
       --teal: #126b5d;
       --dark: #103f38;
-      --mint: #e0f1e9;
+      --mint: #dff2e9;
       --paper: #fffaf0;
       --orange: #d86538;
       --sun: #ffd168;
-      --line: #dcded0;
-      --muted: #566d64;
+      --line: #d4dac8;
+      --muted: #496159;
       --white: #fffefa;
-      --shadow: 0 12px 36px #143c3710;
+      --shadow: 0 12px 36px #143c3712;
+      --font-child: 'Nunito', 'Verdana', 'Trebuchet MS', Arial, sans-serif;
     }
 
     * {
@@ -31,7 +36,10 @@
       margin: 0;
       background: var(--paper);
       color: var(--ink);
-      font: 16px/1.55 'Trebuchet MS', Arial, sans-serif;
+      font-family: var(--font-child);
+      font-size: 18px;
+      line-height: 1.65;
+      letter-spacing: 0.2px;
     }
 
     body.reduce-motion * {
@@ -40,19 +48,20 @@
     }
 
     /* =========================================================
-       2. TOMBOL, INPUT, & TIPOGRAFI
+       2. TOMBOL, TOMBOL SUARA (TTS), INPUT, & TIPOGRAFI
        ========================================================= */
     button, input, select, textarea {
       font: inherit;
+      letter-spacing: 0.2px;
     }
 
     button {
       cursor: pointer;
       border: 0;
-      border-radius: 14px;
-      padding: 12px 18px;
+      border-radius: 16px;
+      padding: 13px 20px;
       font-weight: 800;
-      line-height: 1.3;
+      line-height: 1.35;
       transition: transform .15s, background .15s;
     }
 
@@ -90,14 +99,33 @@
 
     button.outline {
       background: transparent;
-      border: 1px solid var(--line);
+      border: 2px solid var(--line);
       color: var(--ink);
     }
 
     button.small {
-      font-size: 13px;
-      padding: 9px 13px;
-      border-radius: 10px;
+      font-size: 15px;
+      padding: 10px 15px;
+      border-radius: 12px;
+    }
+
+    /* Tombol Khusus Bantu Baca Suara (TTS) */
+    button.tts-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff3d1;
+      color: #7c4308;
+      border: 2px solid #f0c265;
+      border-radius: 50px;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 800;
+      box-shadow: 0 3px 0 #e2b04e;
+    }
+
+    button.tts-btn:hover {
+      background: #ffe7a3;
     }
 
     h1, h2, h3, p {
@@ -105,21 +133,25 @@
     }
 
     h1 {
-      font-size: clamp(32px, 4.5vw, 58px);
-      line-height: 1.06;
-      letter-spacing: -2px;
+      font-size: clamp(32px, 4.5vw, 52px);
+      line-height: 1.18;
+      letter-spacing: -0.3px;
       margin-bottom: 16px;
+      font-weight: 900;
     }
 
     h2 {
-      font-size: 26px;
-      line-height: 1.2;
-      letter-spacing: -.7px;
+      font-size: 28px;
+      line-height: 1.28;
+      letter-spacing: 0;
+      font-weight: 900;
     }
 
     h3 {
-      font-size: 19px;
+      font-size: 21px;
+      line-height: 1.35;
       margin-bottom: 8px;
+      font-weight: 800;
     }
 
     p {
@@ -127,7 +159,7 @@
     }
 
     small, .smalltext {
-      font-size: 12px;
+      font-size: 14px;
       line-height: 1.6;
     }
 
@@ -136,9 +168,9 @@
     }
 
     .eyebrow {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 900;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
     }
 
@@ -146,10 +178,10 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 10px;
+      padding: 6px 12px;
       border-radius: 50px;
       background: var(--mint);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 800;
     }
 
@@ -169,7 +201,7 @@
 
     .stack {
       display: grid;
-      gap: 14px;
+      gap: 16px;
     }
 
     .hidden {
@@ -192,7 +224,7 @@
     }
 
     .topbar .wrap {
-      min-height: 84px;
+      min-height: 86px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -204,21 +236,20 @@
       gap: 10px;
       align-items: center;
       font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -.5px;
+      line-height: 1.15;
     }
 
     .brand small {
       display: block;
-      font-weight: 500;
-      font-size: 10px;
-      letter-spacing: 1.6px;
-      margin-top: 6px;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      margin-top: 5px;
     }
 
     .brand svg {
-      width: 44px;
-      height: 44px;
+      width: 46px;
+      height: 46px;
     }
 
     .nav {
@@ -228,10 +259,16 @@
     }
 
     .nav button {
-      font-size: 13px;
+      font-size: 15px;
       background: transparent;
       color: var(--ink);
-      padding: 10px;
+      padding: 10px 12px;
+    }
+
+    .nav button#navSound[aria-pressed="true"] {
+      background: var(--mint);
+      color: var(--teal);
+      border: 2px solid #99ceba;
     }
 
     .syncbar {
@@ -239,8 +276,8 @@
       justify-content: space-between;
       gap: 10px;
       align-items: center;
-      min-height: 34px;
-      font-size: 11px;
+      min-height: 38px;
+      font-size: 13px;
       color: var(--muted);
     }
 
@@ -250,6 +287,7 @@
 
     .pending {
       color: #9d451a;
+      font-weight: 700;
     }
 
     /* =========================================================
@@ -264,18 +302,17 @@
     }
 
     .hero-copy p {
-      max-width: 490px;
+      max-width: 520px;
     }
 
     .hero .eyebrow {
       color: var(--orange);
-      margin-bottom: 18px;
-      letter-spacing: 1.5px;
+      margin-bottom: 14px;
     }
 
     .hero .desc {
-      font-size: 17px;
-      max-width: 450px;
+      font-size: 19px;
+      max-width: 490px;
     }
 
     .hero-art {
@@ -297,23 +334,23 @@
       bottom: 16px;
       left: 20px;
       background: white;
-      padding: 8px 13px;
+      padding: 8px 14px;
       border-radius: 14px;
-      font-size: 12px;
+      font-size: 14px;
       box-shadow: var(--shadow);
-      font-weight: bold;
+      font-weight: 800;
     }
 
     .journey {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+      gap: 14px;
       margin: 0 0 28px;
     }
 
     .journey button {
       background: #fffefa;
-      border: 1px solid #d6dfce;
+      border: 2px solid #d6dfce;
       text-align: left;
       padding: 18px;
       position: relative;
@@ -326,21 +363,22 @@
 
     .journey button b {
       display: block;
-      font-size: 16px;
+      font-size: 18px;
       margin: 7px 0;
     }
 
     .journey button small {
       display: block;
-      font-weight: 400;
-      color: #566d64;
+      font-weight: 600;
+      color: #496159;
     }
 
     .journey .stamp {
       float: right;
       background: #e1efdd;
       border-radius: 50%;
-      padding: 5px 9px;
+      padding: 5px 10px;
+      font-size: 14px;
     }
 
     .journey button.done {
@@ -354,7 +392,7 @@
 
     .layout {
       display: grid;
-      grid-template-columns: 1fr 280px;
+      grid-template-columns: 1fr 295px;
       gap: 22px;
     }
 
@@ -393,7 +431,7 @@
       text-align: left;
       padding: 14px;
       border-radius: 20px;
-      width: 220px;
+      width: 240px;
     }
 
     .arena-pin svg {
@@ -404,26 +442,26 @@
 
     .arena-pin strong {
       display: block;
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .arena-pin small {
       display: block;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--muted);
       margin-top: 3px;
     }
 
     .pin1 {
-      top: 63px;
-      left: 7%;
-      transform: rotate(-3deg);
+      top: 60px;
+      left: 6%;
+      transform: rotate(-2deg);
     }
 
     .pin2 {
-      bottom: 58px;
-      right: 6%;
-      transform: rotate(3deg);
+      bottom: 54px;
+      right: 5%;
+      transform: rotate(2deg);
     }
 
     .arena-pin:hover {
@@ -434,9 +472,9 @@
       position: absolute;
       bottom: 19px;
       left: 20px;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 800;
-      color: #44654b;
+      color: #3d5d44;
     }
 
     .side-icon {
@@ -487,7 +525,7 @@
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 14px;
       margin: 24px 0;
     }
 
@@ -498,19 +536,19 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 13px;
+      font-size: 16px;
     }
 
     .step .number {
       color: var(--orange);
       font-weight: 900;
-      font-size: 25px;
+      font-size: 28px;
     }
 
     .footer {
       padding: 24px 0 30px;
       text-align: center;
-      font-size: 11px;
+      font-size: 13px;
       color: var(--muted);
     }
 
@@ -533,50 +571,51 @@
       background: var(--paper);
       border-radius: 26px;
       padding: 28px;
-      width: min(610px, 100%);
+      width: min(640px, 100%);
       max-height: 92vh;
       overflow: auto;
       box-shadow: 0 24px 90px #001e2c44;
     }
 
     .modal-box.wide {
-      width: min(900px, 100%);
+      width: min(920px, 100%);
     }
 
     .close {
       background: #e5eade;
-      padding: 7px 12px;
+      padding: 8px 14px;
       float: right;
     }
 
     .field {
       display: grid;
       gap: 6px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .field label, .label {
       font-weight: 800;
-      font-size: 13px;
+      font-size: 16px;
     }
 
     input, select, textarea {
       width: 100%;
-      border: 1px solid #b9c9bd;
-      padding: 11px 13px;
-      border-radius: 12px;
+      border: 2px solid #aec2b3;
+      padding: 12px 14px;
+      border-radius: 14px;
       background: #fff;
       color: var(--ink);
+      font-size: 17px;
     }
 
     textarea {
-      min-height: 80px;
+      min-height: 90px;
       resize: vertical;
     }
 
     input[type=checkbox] {
-      width: 19px;
-      height: 19px;
+      width: 20px;
+      height: 20px;
       flex-shrink: 0;
       accent-color: var(--teal);
     }
@@ -589,9 +628,9 @@
 
     .notice {
       border-radius: 14px;
-      padding: 12px 15px;
+      padding: 14px 16px;
       background: #fff0cc;
-      font-size: 13px;
+      font-size: 15px;
     }
 
     .error {
@@ -608,7 +647,7 @@
        ========================================================= */
     .mission-layout {
       display: grid;
-      grid-template-columns: 1fr 310px;
+      grid-template-columns: 1fr 330px;
       gap: 20px;
     }
 
@@ -625,9 +664,10 @@
 
     .mission-chip {
       background: #eceee1;
-      border: 1px solid transparent;
-      min-width: 46px;
-      padding: 10px;
+      border: 2px solid transparent;
+      min-width: 50px;
+      padding: 10px 14px;
+      font-size: 16px;
     }
 
     .mission-chip.active {
@@ -657,21 +697,25 @@
     }
 
     .story-card p {
-      margin: 5px 0;
-      font-size: 14px;
+      margin: 6px 0;
+      font-size: 17px;
+      line-height: 1.55;
     }
 
     .story-card .eyebrow {
       color: #ffd168;
     }
 
-    .story-card button {
+    .story-actions {
       margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       white-space: nowrap;
     }
 
     .arena-card {
-      padding: 16px;
+      padding: 18px;
     }
 
     .canvas-box {
@@ -692,9 +736,10 @@
       position: absolute;
       left: 14px;
       top: 12px;
-      font-size: 11px;
-      background: #ffffffda;
-      padding: 5px 10px;
+      font-size: 13px;
+      font-weight: 700;
+      background: #ffffffeb;
+      padding: 5px 12px;
       border-radius: 30px;
     }
 
@@ -719,17 +764,18 @@
 
     .power-value {
       font-weight: 900;
-      font-size: 24px;
-      min-width: 40px;
+      font-size: 26px;
+      min-width: 44px;
       color: var(--orange);
     }
 
     .delivery-status {
       background: #ecf2e6;
       border-radius: 12px;
-      padding: 11px 14px;
+      padding: 12px 16px;
       margin-bottom: 14px;
-      font-size: 14px;
+      font-size: 16px;
+      font-weight: 700;
     }
 
     .delivery-status.hit {
@@ -746,14 +792,14 @@
 
     .table-scroll {
       overflow: auto;
-      max-height: 270px;
+      max-height: 290px;
       max-width: 100%;
     }
 
     table {
       border-collapse: collapse;
       width: 100%;
-      font-size: 12px;
+      font-size: 15px;
       text-align: left;
     }
 
@@ -766,20 +812,21 @@
     }
 
     th, td {
-      padding: 10px;
+      padding: 11px 12px;
       border-bottom: 1px solid var(--line);
       white-space: normal;
     }
 
     td.number {
       font-variant-numeric: tabular-nums;
+      font-weight: 700;
     }
 
     .empty {
       padding: 20px;
       text-align: center;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 15px;
     }
 
     .mission-aside .card {
@@ -787,12 +834,12 @@
     }
 
     .task-list {
-      padding-left: 20px;
-      font-size: 13px;
+      padding-left: 22px;
+      font-size: 15px;
     }
 
     .task-list li {
-      padding: 4px;
+      padding: 5px 2px;
     }
 
     .buddy {
@@ -808,30 +855,38 @@
     }
 
     .objective {
-      border-left: 4px solid var(--orange);
+      border-left: 5px solid var(--orange);
       padding-left: 14px;
+      margin-bottom: 12px;
+    }
+
+    .objective p {
+      font-size: 18px;
+      line-height: 1.5;
     }
 
     .game-step {
       display: flex;
       gap: 8px;
       margin: 15px 0;
-      font-size: 11px;
+      font-size: 13px;
+      font-weight: 700;
       flex-wrap: wrap;
     }
 
     .game-step span {
-      padding: 5px 9px;
-      border-radius: 8px;
+      padding: 6px 10px;
+      border-radius: 10px;
       background: #eef0e5;
     }
 
     .game-step .current {
       background: #ffdfa1;
+      font-weight: 900;
     }
 
     .progress-track {
-      height: 8px;
+      height: 10px;
       background: #e4e8da;
       border-radius: 9px;
       overflow: hidden;
@@ -853,7 +908,7 @@
     }
 
     .result-stars {
-      font-size: 32px;
+      font-size: 34px;
       color: #d38719;
       letter-spacing: 5px;
     }
@@ -867,7 +922,7 @@
       align-items: center;
       border: 2px solid #c5dbce;
       background: #f0f8f0;
-      padding: 10px;
+      padding: 10px 12px;
       border-radius: 14px;
       margin: 8px 0;
     }
@@ -878,57 +933,61 @@
     }
 
     .block-number {
-      font-weight: bold;
+      font-weight: 900;
+      font-size: 17px;
       color: #126b5d;
+      min-width: 22px;
     }
 
     .block-fields {
       display: flex;
       flex: 1;
-      gap: 6px;
+      gap: 8px;
       min-width: 0;
     }
 
     .block-fields select {
       min-width: 0;
-      font-size: 12px;
-      padding: 8px;
+      font-size: 15px;
+      padding: 9px 10px;
     }
 
     .block-tools {
       display: flex;
-      gap: 3px;
+      gap: 4px;
     }
 
     .block-tools button {
-      padding: 7px;
+      padding: 8px 10px;
+      font-size: 14px;
     }
 
     .roda-panel {
       padding: 16px;
-      border: 1px solid #cbded2;
+      border: 2px solid #cbded2;
       border-radius: 18px;
       background: #eff6ec;
       margin: 16px 0;
     }
 
     .roda-panel .buddy svg {
-      width: 50px;
-      height: 50px;
+      width: 52px;
+      height: 52px;
     }
 
     .roda-thread {
-      max-height: 260px;
+      max-height: 280px;
       overflow: auto;
       margin: 14px 0;
     }
 
     .roda-bubble {
-      border-radius: 12px;
-      padding: 12px;
+      border-radius: 14px;
+      padding: 14px;
       background: white;
-      font-size: 13px;
-      margin: 8px 0;
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 10px 0;
       white-space: pre-wrap;
       overflow-wrap: anywhere;
     }
@@ -938,20 +997,20 @@
     }
 
     .roda-bubble p {
-      margin: 6px 0 0;
+      margin: 8px 0 0;
     }
 
     .roda-panel textarea {
-      min-height: 65px;
+      min-height: 75px;
       margin: 6px 0;
     }
 
     .program-trace {
-      font-size: 12px;
-      max-height: 180px;
+      font-size: 15px;
+      max-height: 190px;
       overflow: auto;
       background: #f3f3e9;
-      padding: 10px;
+      padding: 12px;
       border-radius: 12px;
       overflow-wrap: anywhere;
     }
@@ -968,8 +1027,8 @@
     }
 
     .stage-buttons button {
-      padding: 8px;
-      font-size: 12px;
+      padding: 9px 12px;
+      font-size: 14px;
     }
 
     .compare-bars {
@@ -993,7 +1052,7 @@
 
     .kit-note {
       border-left: 4px solid #dc9d36;
-      padding: 12px;
+      padding: 14px;
       margin: 16px 0;
       background: #fff4d7;
     }
@@ -1051,7 +1110,7 @@
     }
 
     .metric span {
-      font-size: 12px;
+      font-size: 14px;
       color: var(--muted);
     }
 
@@ -1071,7 +1130,7 @@
       flex-direction: column;
       min-width: 15px;
       height: 100%;
-      font-size: 9px;
+      font-size: 11px;
     }
 
     .bar {
@@ -1095,12 +1154,13 @@
       transform: translateX(-50%);
       background: var(--dark);
       color: white;
-      border-radius: 14px;
-      padding: 12px 20px;
+      border-radius: 16px;
+      padding: 14px 22px;
       z-index: 100;
       max-width: 90vw;
       box-shadow: var(--shadow);
-      font-size: 14px;
+      font-size: 16px;
+      font-weight: 700;
     }
 
     .tutorial-list {
@@ -1112,14 +1172,16 @@
       display: flex;
       gap: 12px;
       align-items: flex-start;
-      padding: 13px;
+      padding: 14px;
       background: #eef1e7;
       border-radius: 14px;
+      font-size: 16px;
     }
 
     .tutorial-item b {
       min-width: 28px;
       color: var(--orange);
+      font-size: 20px;
     }
 
     .stack, .card, .layout > *, .mission-layout > *, .controls > * {
@@ -1155,10 +1217,10 @@
         gap: 8px;
       }
       .journey button {
-        padding: 12px;
+        padding: 14px;
       }
       .journey button b {
-        font-size: 14px;
+        font-size: 16px;
       }
       .story-card {
         align-items: flex-start;
@@ -1174,31 +1236,36 @@
         flex: 1;
         min-width: 180px;
       }
-      .story-card button {
+      .story-actions {
         margin: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
       }
     }
 
     @media (max-width: 580px) {
+      body {
+        font-size: 17px;
+      }
       .topbar .wrap {
-        min-height: 74px;
+        min-height: 76px;
         gap: 6px;
       }
       .brand {
-        font-size: 13px;
+        font-size: 14px;
       }
       .brand svg {
-        width: 35px;
-        height: 35px;
+        width: 36px;
+        height: 36px;
       }
       .nav {
-        gap: 0;
+        gap: 2px;
         flex-wrap: wrap;
         justify-content: flex-end;
       }
       .nav button {
-        font-size: 11px;
-        padding: 8px;
+        font-size: 13px;
+        padding: 8px 10px;
       }
       .nav .optional {
         display: none;
@@ -1211,17 +1278,10 @@
         height: 220px;
       }
       .hero-copy .desc {
-        font-size: 15px;
+        font-size: 17px;
       }
       h1 {
-        font-size: 38px;
-        letter-spacing: -1.5px;
-      }
-      .hero .eyebrow {
-        margin-bottom: 12px;
-      }
-      .hero-copy p {
-        margin-bottom: 14px;
+        font-size: 34px;
       }
       .card {
         padding: 18px;
@@ -1231,7 +1291,7 @@
         height: 330px;
       }
       .arena-pin {
-        width: 205px;
+        width: 215px;
         padding: 12px;
       }
       .pin1 {
@@ -1244,18 +1304,18 @@
       }
       .side-grid, .mission-aside, .dashboard-grid, .formgrid {
         grid-template-columns: 1fr;
-        gap: 0;
+        gap: 12px;
       }
       .steps {
-        gap: 7px;
+        gap: 8px;
       }
       .step {
-        padding: 11px;
+        padding: 12px;
         display: block;
-        font-size: 11px;
+        font-size: 14px;
       }
       .step .number {
-        font-size: 18px;
+        font-size: 22px;
       }
       .metrics {
         grid-template-columns: repeat(2, 1fr);
@@ -1270,22 +1330,12 @@
         margin-bottom: 0;
       }
       .canvas-label {
-        font-size: 9px;
+        font-size: 11px;
         top: 7px;
         left: 8px;
       }
       .mission-head h2 {
-        font-size: 23px;
-      }
-      .game-step {
-        gap: 4px;
-        font-size: 9px;
-      }
-      .game-step span {
-        padding: 5px 6px;
-      }
-      .syncbar {
-        font-size: 10px;
+        font-size: 24px;
       }
       .block-fields, .block-tools {
         flex-direction: column;
@@ -1321,7 +1371,7 @@
         <button id="navHome">Kampung</button>
         <button id="navReport">Rapor</button>
         <button id="navGuide" class="optional">Panduan</button>
-        <button id="navSound" aria-pressed="false" title="Aktifkan suara">Suara: mati</button>
+        <button id="navSound" aria-pressed="true" title="Matikan atau aktifkan suara pembaca teks">🔊 Suara: aktif</button>
         <button id="navAdmin">Guru</button>
       </nav>
     </div>
@@ -1344,12 +1394,15 @@
         <div class="hero-copy">
           <div class="eyebrow">CAKRA • Petualangan sains kelas IV</div>
           <h1>Festival kampung<br><span style="color:var(--orange)">butuh idemu!</span></h1>
-          <p class="desc muted">
-            Bantu warga mengantar perlengkapan dengan mobil dolanan. Uji lintasan, susun kode, dan temukan strategi terbaikmu bersama Cak Roda.
+          <p class="desc muted" id="welcomeGreetingText">
+            Halo teman-teman! Selamat datang di Kampung Dolanan Sains. Bantu warga mengantar perlengkapan festival dengan mobil dolanan. Uji lintasan, susun kode, dan temukan strategi terbaikmu bersama Cak Roda!
           </p>
           <div class="row">
             <button id="startButton" class="primary">Ayo, masuk kampung →</button>
             <button id="tutorialButton" class="outline">Cara bermain</button>
+            <button id="speakWelcomeBtn" class="tts-btn" type="button" title="Dengarkan sambutan aplikasi">
+              🔊 Dengarkan Sambutan
+            </button>
           </div>
           <div class="row" style="margin-top:20px">
             <span class="tag">6 misi festival</span>
@@ -1368,7 +1421,7 @@
               <div class="eyebrow muted">Peta petualangan</div>
               <h2 style="margin:7px 0 0">Mau dolanan di mana?</h2>
             </div>
-            <span class="tag">Tanpa kit fisik</span>
+            <button id="speakMapBtn" class="tts-btn" type="button">🔊 Dengarkan Pilihan Arena</button>
           </div>
           <div class="map" id="villageMap">
             <button class="arena-pin pin1" id="marbleArena">
@@ -1407,8 +1460,11 @@
             <button class="sun small" id="profileButton">Isi nama & sekolah</button>
           </div>
           <div class="card">
-            <div class="eyebrow" style="color:var(--orange)">Pesan Cak Roda</div>
-            <p style="margin:10px 0 0;font-weight:bold">
+            <div class="row between">
+              <div class="eyebrow" style="color:var(--orange)">Pesan Cak Roda</div>
+              <button id="speakHomeBuddyBtn" class="tts-btn" type="button">🔊 Dengarkan</button>
+            </div>
+            <p style="margin:10px 0 0;font-weight:800" id="homeBuddyQuote">
               “Dugaanmu boleh berubah. Tunjukkan bukti yang membuatmu berubah pikiran!”
             </p>
           </div>
@@ -1444,7 +1500,10 @@
             <div class="eyebrow muted" id="missionNumber"></div>
             <h2 id="missionTitle" style="margin:8px 0"></h2>
           </div>
-          <button class="small ghost" id="predictButton">Tulis prediksi</button>
+          <div class="row">
+            <button class="tts-btn" id="speakMissionIntroBtn" type="button">🔊 Dengarkan Misi</button>
+            <button class="small ghost" id="predictButton">Tulis prediksi</button>
+          </div>
         </div>
         <p class="muted" id="missionDesc"></p>
       </div>
@@ -1487,6 +1546,7 @@
               <button class="primary" id="launchButton">Uji geraknya →</button>
               <button class="outline" id="replayButton" disabled>Putar ulang</button>
               <button class="sun" id="openProgram">Susun kode dolanan</button>
+              <button class="tts-btn" id="speakControlsBtn" type="button" title="Dengarkan panduan tombol perintah">🔊 Panduan Perintah</button>
               <span class="smalltext muted" id="liveResult" role="status" aria-live="polite">
                 Buat prediksi sebelum mencoba.
               </span>
@@ -1495,10 +1555,15 @@
 
           <!-- Panel Koding Visual Murid -->
           <div id="programPanel" class="card hidden">
-            <div class="eyebrow muted">Koding untuk murid</div>
-            <h3>Atur dolananmu</h3>
+            <div class="row between">
+              <div>
+                <div class="eyebrow muted">Koding untuk murid</div>
+                <h3>Atur perintah dolananmu</h3>
+              </div>
+              <button class="tts-btn" id="speakProgramBtn" type="button">🔊 Bacakan Urutan Kode</button>
+            </div>
             <p class="smalltext muted">
-              Susun kartu dengan tombol naik/turun. Aplikasi menjalankan perintahmu satu per satu.
+              Susun kartu perintah dengan tombol naik atau turun. Aplikasi akan membacakan dan menjalankan perintahmu satu per satu.
             </p>
             <div class="row">
               <button class="small ghost" id="templateBlank">Lengkapi kartu</button>
@@ -1548,19 +1613,24 @@
           </div>
         </div>
 
-        <!-- Panel Samping Cak Roda & Kesimpulan -->
+        <!-- Panel Samping Pertanyaan Cak Roda & Kesimpulan -->
         <aside class="mission-aside stack">
           <div class="card">
-            <div class="buddy">
-              <span id="buddyIcon"></span>
-              <div>
-                <div class="eyebrow muted">Teman penyelidikan</div>
-                <h3 style="margin:5px 0">Cak Roda</h3>
+            <div class="row between">
+              <div class="buddy">
+                <span id="buddyIcon"></span>
+                <div>
+                  <div class="eyebrow muted">Pertanyaan penyelidikan</div>
+                  <h3 style="margin:4px 0">Cak Roda</h3>
+                </div>
               </div>
+              <button class="tts-btn" id="speakCakRodaQuestionBtn" type="button" title="Dengarkan pertanyaan Cak Roda dan tugas misi">
+                🔊 Dengarkan
+              </button>
             </div>
             <div class="divider"></div>
             <div class="objective">
-              <p id="missionQuestion" style="font-weight:bold"></p>
+              <p id="missionQuestion" style="font-weight:800"></p>
             </div>
             <div class="game-step">
               <span id="stepPrediction">1. Prediksi</span>
@@ -1576,7 +1646,7 @@
               <button class="outline" id="rodaReflection">Refleksi</button>
             </div>
             <p class="smalltext muted" style="margin-top:10px">
-              Cak Roda membantu memeriksa ide. Saran AI perlu diperiksa dengan bukti.
+              Tekan tombol 🔊 untuk mendengarkan pertanyaan Cak Roda.
             </p>
           </div>
 
@@ -1646,14 +1716,13 @@
     'use strict';
 
     /* =========================================================
-       BAGIAN 1: KONFIGURASI SERVER APPS SCRIPT (EDIT DI SINI)
-       =========================================================
-       Tempel URL Web App (/exec) dari Google Apps Script Anda di bawah ini.
-       - Pastikan di-deploy dari akun @gmail.com pribadi (bukan belajar.id)
-       - Execute as: Me
-       - Who has access: Anyone (Siapa saja)
-    */
+       BAGIAN 1: KONFIGURASI SERVER APPS SCRIPT & SUARA (EDIT DI SINI)
+       ========================================================= */
     const GAS_EXEC_URL = 'https://script.google.com/macros/s/AKfycbyYOrUNmsWUNfQ-JB17_FkHM4ipqxUGk3Cg3h-xcGtg4tXyGXQj0DX0xcucQnvBiRnL/exec';
+
+    // Kecepatan bicara suara (0.90 = sedikit lebih pelan & jelas untuk siswa SD)
+    const SPEECH_RATE = 0.92;
+    const SPEECH_PITCH = 1.05;
 
     const HAS_GAS_RUNTIME = !!(window.google && window.google.script && window.google.script.run);
     const HAS_REMOTE_API = /^https:\/\/script\.google\.com\/(a\/macros\/[^/]+\/)?macros\/s\/[^/]+\/exec(\?.*)?$/i.test(GAS_EXEC_URL.trim());
@@ -1668,7 +1737,75 @@
     };
 
     /* =========================================================
-       BAGIAN 2: UTILITAS & PENYIMPANAN LOKAL PERANGKAT
+       BAGIAN 2: SISTEM EFEK SUARA & PEMBACA TEKS (TEXT-TO-SPEECH)
+       ========================================================= */
+    let sound = true; // Aktif secara bawaan untuk membantu siswa yang kesulitan membaca
+
+    // Efek nada lembut (chime) saat tombol/salam/pertanyaan aktif
+    function playChime(type = ' greet') {
+      if (!sound) return;
+      try {
+        const ac = new (window.AudioContext || window.webkitAudioContext)();
+        const now = ac.currentTime;
+        const notes = type === 'win' ? [523.25, 659.25, 783.99] : (type === 'roda' ? [440, 587.33] : [392, 523.25]);
+        notes.forEach((freq, idx) => {
+          const osc = ac.createOscillator();
+          const gain = ac.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.11);
+          gain.gain.setValueAtTime(0.06, now + idx * 0.11);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.11 + 0.25);
+          osc.connect(gain);
+          gain.connect(ac.destination);
+          osc.start(now + idx * 0.11);
+          osc.stop(now + idx * 0.11 + 0.26);
+        });
+        setTimeout(() => ac.close(), 600);
+      } catch (e) {}
+    }
+
+    function stopSpeech() {
+      try {
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      } catch (e) {}
+    }
+
+    /**
+     * Membacakan teks dalam Bahasa Indonesia dengan artikulasi ramah anak
+     */
+    function speakText(text, chimeType = 'roda', force = false) {
+      if (!sound && !force) {
+        toast('Aktifkan tombol "🔊 Suara: aktif" di pojok kanan atas untuk mendengarkan suara.');
+        return;
+      }
+      if (chimeType) playChime(chimeType);
+      try {
+        if (!('speechSynthesis' in window)) {
+          toast('Perangkat ini belum mendukung pembaca suara otomatis.');
+          return;
+        }
+        window.speechSynthesis.cancel();
+        const clean = String(text || '')
+          .replace(/[→↗✓★☆•·]/g, ' ')
+          .replace(/\bm\b/g, ' meter ')
+          .replace(/\bcm\b/g, ' sentimeter ')
+          .replace(/–/g, ' sampai ')
+          .replace(/\s+/g, ' ')
+          .trim();
+        if (!clean) return;
+        const utter = new SpeechSynthesisUtterance(clean);
+        utter.lang = 'id-ID';
+        utter.rate = SPEECH_RATE;
+        utter.pitch = SPEECH_PITCH;
+        const voices = window.speechSynthesis.getVoices();
+        const idVoice = voices.find(v => /id[-_]ID/i.test(v.lang)) || voices.find(v => /indones/i.test(v.name));
+        if (idVoice) utter.voice = idVoice;
+        window.speechSynthesis.speak(utter);
+      } catch (e) {}
+    }
+
+    /* =========================================================
+       BAGIAN 3: UTILITAS & PENYIMPANAN LOKAL PERANGKAT
        ========================================================= */
     const $ = id => document.getElementById(id);
     const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({
@@ -1738,7 +1875,6 @@
     let lastDraw = null;
     let flushBusy = false;
     let flushPromise = null;
-    let sound = false;
     let adminToken = '';
     let dashboard = null;
     let lastInteraction = Date.now();
@@ -1750,7 +1886,7 @@
     let afterLogin = null;
 
     /* =========================================================
-       BAGIAN 3: ASET VISUAL SVG & DATA MISI / CERITA (MUDAH DIEDIT)
+       BAGIAN 4: ASET VISUAL SVG & DATA MISI / CERITA (MUDAH DIEDIT)
        ========================================================= */
     function sprite(name) {
       const shapes = {
@@ -1933,7 +2069,7 @@
     }
 
     /* =========================================================
-       BAGIAN 4: KOMUNIKASI SERVER (doGet/doPost) & AUTO-FALLBACK
+       BAGIAN 5: KOMUNIKASI SERVER (doGet/doPost) & AUTO-FALLBACK
        ========================================================= */
     function persist() {
       store(BUFFER_KEY, { session, queue, profile });
@@ -1947,11 +2083,6 @@
       if (queue.length >= 12) flush();
     }
 
-    /**
-     * RPC Hybrid (Mendukung Apps Script, GitHub Pages, Google Sites, & Mode Offline):
-     * Jika terjadi 'Failed to fetch' (misal karena CORS atau kendala sinyal),
-     * murid otomatis dialihkan ke Mode Mandiri lokal sehingga tetap bisa bermain!
-     */
     async function rpc(name, ...args) {
       if (HAS_GAS_RUNTIME) {
         return new Promise((resolve, reject) => {
@@ -1985,7 +2116,6 @@
           OFFLINE_FALLBACK = false;
           return data.result;
         } catch (err) {
-          // Auto-Fallback untuk murid agar tidak tertahan oleh 'Failed to fetch'
           if (['startSession', 'saveEvents', 'getLearningConfig', 'askCakRoda', 'getExperimentReports'].includes(name)) {
             OFFLINE_FALLBACK = true;
             connectivityMessage = 'Mode Mandiri Aktif (Tersimpan di perangkat • Server belum terjangkau)';
@@ -2050,7 +2180,7 @@
     }
 
     /* =========================================================
-       BAGIAN 5: DIALOG MODAL, SUARA, & NAVIGASI HALAMAN
+       BAGIAN 6: DIALOG MODAL, SUARA EFEK, & NAVIGASI HALAMAN
        ========================================================= */
     let toastTimer;
     function toast(s) {
@@ -2080,6 +2210,7 @@
         toast('Cak Roda sedang merespons. Tunggu sebentar.');
         return;
       }
+      stopSpeech();
       $('modal').classList.add('hidden');
       if (modalReturn && modalReturn.isConnected) modalReturn.focus();
     }
@@ -2123,6 +2254,7 @@
         toast('Tunggu geraknya selesai dahulu.');
         return false;
       }
+      stopSpeech();
       view = next;
       ['home', 'game', 'dashboard'].forEach(v => $(v + 'View').classList.toggle('hidden', v !== next));
       window.scrollTo({ top: 0, behavior: 'auto' });
@@ -2148,19 +2280,26 @@
     }
 
     /* =========================================================
-       BAGIAN 6: LOGIN PEMAIN & PANDUAN AWAL
+       BAGIAN 7: LOGIN PEMAIN (DENGAN SUARA SALAM) & PANDUAN AWAL
        ========================================================= */
     function login(onDone) {
       afterLogin = onDone || null;
       if (session) {
         modal(
-          '<h2 id="modalTitle">Halo, ' + esc(profile.code) + '!</h2>' +
-          '<p>Ingin melanjutkan permainan atau berganti pemain?</p>' +
+          '<div class="row between">' +
+            '<h2 id="modalTitle" style="margin:0">Halo, ' + esc(profile.code) + '!</h2>' +
+            '<button type="button" class="tts-btn" id="speakSessionModalBtn">🔊 Dengarkan</button>' +
+          '</div>' +
+          '<p style="margin-top:12px">Ingin melanjutkan permainan atau berganti pemain?</p>' +
           '<div class="row">' +
             '<button class="primary" id="keepSession">Lanjut bermain</button>' +
             '<button class="outline" id="endSession">Ganti pemain</button>' +
           '</div>'
         );
+        const sessionGreeting = 'Halo ' + profile.code + '! Apakah kamu ingin lanjut bermain, atau ganti pemain?';
+        $('speakSessionModalBtn').onclick = () => speakText(sessionGreeting, 'greet', true);
+        if (sound) speakText(sessionGreeting, 'greet');
+
         $('keepSession').onclick = () => {
           closeModal();
           if (afterLogin) afterLogin();
@@ -2188,8 +2327,11 @@
       }
 
       modal(
-        '<h2 id="modalTitle">Ayo dolanan, rek!</h2>' +
-        '<p class="muted">Isi nama dan sekolahmu, lalu pilih permainan.</p>' +
+        '<div class="row between">' +
+          '<h2 id="modalTitle" style="margin:0">Ayo dolanan, rek!</h2>' +
+          '<button type="button" class="tts-btn" id="speakLoginGuideBtn">🔊 Bacakan Petunjuk</button>' +
+        '</div>' +
+        '<p class="muted" style="margin-top:8px">Isi nama panggilan dan sekolahmu, lalu tekan tombol Masuk dan bermain.</p>' +
         '<form id="loginForm">' +
           '<div class="field">' +
             '<label for="playerCode">Nama / nama panggilan</label>' +
@@ -2202,10 +2344,14 @@
           '<div id="loginError" class="notice error hidden" role="alert" style="margin-bottom:12px"></div>' +
           '<button class="primary full" type="submit" id="loginSubmit">Masuk & bermain →</button>' +
           '<p class="smalltext muted" style="margin:12px 0 0">' +
-            'Nama, sekolah, dan kegiatan bermain dicatat untuk pembelajaran. Saat berdiskusi dengan AI, teks dan data percobaan dapat diproses layanan AI; nama dan sekolah tidak disertakan. Hindari informasi pribadi dalam jawaban. Nama panggilan boleh digunakan. Bermainlah dengan pendampingan guru atau orang tua.' +
+            'Nama, sekolah, dan kegiatan bermain dicatat untuk pembelajaran. Nama panggilan boleh digunakan. Bermainlah dengan pendampingan guru atau orang tua.' +
           '</p>' +
         '</form>'
       );
+
+      const loginGuideSpeech = 'Ayo dolanan, rek! Tuliskan nama panggilanmu pada kotak pertama, dan nama sekolahmu pada kotak kedua. Lalu tekan tombol hijau Masuk dan bermain.';
+      $('speakLoginGuideBtn').onclick = () => speakText(loginGuideSpeech, 'greet', true);
+      if (sound) speakText(loginGuideSpeech, 'greet');
 
       let requestId = uid(), lastSignature = '';
       $('loginForm').onsubmit = async e => {
@@ -2215,9 +2361,11 @@
         const code = $('playerCode').value.trim();
         const school = $('school').value.trim();
         if (code.length < 2 || school.length < 2) {
-          $('loginError').textContent = 'Isi nama dan asal sekolah terlebih dahulu.';
+          const errText = 'Isi nama dan asal sekolah terlebih dahulu.';
+          $('loginError').textContent = errText;
           $('loginError').classList.remove('hidden');
           $('loginSubmit').disabled = false;
+          if (sound) speakText(errText, 'roda');
           return;
         }
         const profiles = load('kds_profiles', {});
@@ -2251,12 +2399,14 @@
           closeModal();
           updateHome();
           flush();
+          const welcomeStudent = 'Halo ' + code + ' dari ' + school + '! Selamat datang di Kampung Dolanan Sains. Ayo mulai petualanganmu!';
           if (onDone) {
             onDone();
           } else {
             switchView('home');
             $('villageMap').scrollIntoView({ behavior: 'smooth', block: 'center' });
             toast('Selamat datang, ' + code + '! Pilih Kelereng atau Mobil Dolanan.');
+            if (sound) speakText(welcomeStudent, 'win');
           }
         } catch (err) {
           const msg = err.message || '';
@@ -2270,22 +2420,28 @@
     }
 
     function tutorial() {
+      const tutorialText = 'Cara menjadi penjelajah sains. Satu: Pilih arena dan misi. Dua: Tulis dugaan dan alasanmu. Tiga: Ubah satu hal, lalu uji geraknya. Empat: Lihat catatan dan jelaskan buktinya.';
       modal(
-        '<h2 id="modalTitle">Cara menjadi penjelajah sains</h2>' +
-        '<div class="tutorial-list">' +
+        '<div class="row between">' +
+          '<h2 id="modalTitle" style="margin:0">Cara menjadi penjelajah sains</h2>' +
+          '<button type="button" class="tts-btn" id="speakTutorialBtn">🔊 Dengarkan Panduan</button>' +
+        '</div>' +
+        '<div class="tutorial-list" style="margin-top:14px">' +
           '<div class="tutorial-item"><b>1</b><span><strong>Pilih arena dan misi.</strong><br>Semua permainan bisa dijalankan tanpa kit fisik.</span></div>' +
           '<div class="tutorial-item"><b>2</b><span><strong>Tulis dugaan dan alasan.</strong><br>Dugaan boleh keliru. Kamu akan memeriksanya.</span></div>' +
           '<div class="tutorial-item"><b>3</b><span><strong>Ubah satu hal, lalu uji.</strong><br>Pakai pengaturan yang sama saat membandingkan permukaan.</span></div>' +
           '<div class="tutorial-item"><b>4</b><span><strong>Lihat catatan dan jelaskan.</strong><br>Sebut nomor uji dan hasil yang mendukung pendapatmu.</span></div>' +
         '</div>' +
-        '<p class="notice" style="margin-top:16px">Ada suara pilihan, tanpa batas waktu, dan petunjuk yang bisa dibuka kapan saja. Teks dapat dibacakan oleh guru.</p>' +
+        '<p class="notice" style="margin-top:16px">Tekan tombol bersimbol 🔊 kapan saja untuk mendengarkan suara pembaca teks.</p>' +
         '<button class="primary full" id="readyTutorial">Aku siap!</button>'
       );
+      $('speakTutorialBtn').onclick = () => speakText(tutorialText, 'greet', true);
+      if (sound) speakText(tutorialText, 'greet');
       $('readyTutorial').onclick = closeModal;
     }
 
     /* =========================================================
-       BAGIAN 7: LOGIKA PERMAINAN, SIMULASI, & REFLEKSI MISI
+       BAGIAN 8: LOGIKA PERMAINAN, SIMULASI, & REFLEKSI MISI
        ========================================================= */
     function enterArena(arena) {
       if (!session) {
@@ -2327,6 +2483,13 @@
       switchView('game');
       renderMission();
       event('mission_open', { resumed: !!stored });
+      if (sound) {
+        const m = spec();
+        const introSpeech = 'Misi ' + game.mission + ': ' + title(m) + '. ' +
+          (game.arena === 'mobil' ? STORY[game.mission - 1].story + ' ' + STORY[game.mission - 1].goal : m.desc) +
+          ' Pertanyaan Cak Roda: ' + m.q;
+        speakText(introSpeech, 'greet');
+      }
     }
 
     function pairExists(kind) {
@@ -2422,23 +2585,31 @@
     }
 
     function predict() {
+      const m = spec();
       if (game.prediction) {
         modal(
-          '<h2 id="modalTitle">Prediksi awalku</h2>' +
-          '<p><b>' + esc(game.prediction.choice) + '</b></p>' +
+          '<div class="row between">' +
+            '<h2 id="modalTitle" style="margin:0">Prediksi awalku</h2>' +
+            '<button type="button" class="tts-btn" id="speakSavedPredBtn">🔊 Bacakan</button>' +
+          '</div>' +
+          '<p style="margin-top:12px"><b>' + esc(game.prediction.choice) + '</b></p>' +
           '<p>' + esc(game.prediction.reason) + '</p>' +
           '<div class="notice">Prediksi awal dipertahankan sebagai jejak berpikir. Jelaskan perubahan pendapatmu pada refleksi akhir.</div>'
         );
+        $('speakSavedPredBtn').onclick = () => speakText('Prediksi awalku: ' + game.prediction.choice + '. Alasanku: ' + game.prediction.reason, 'roda', true);
         return;
       }
       modal(
-        '<h2 id="modalTitle">Sebelum menguji…</h2>' +
-        '<p>' + esc(spec().q) + '</p>' +
+        '<div class="row between">' +
+          '<h2 id="modalTitle" style="margin:0">Sebelum menguji…</h2>' +
+          '<button type="button" class="tts-btn" id="speakPredOptionsBtn">🔊 Bacakan Pilihan</button>' +
+        '</div>' +
+        '<p style="margin-top:10px;font-weight:700">' + esc(m.q) + '</p>' +
         '<form id="predictionForm">' +
           '<div class="field">' +
             '<label for="predictionChoice">Dugaan awalku</label>' +
             '<select id="predictionChoice">' +
-              spec().claims.map((c, i) => '<option value="' + i + '">' + esc(c) + '</option>').join('') +
+              m.claims.map((c, i) => '<option value="' + i + '">' + esc(c) + '</option>').join('') +
             '</select>' +
           '</div>' +
           '<div class="field">' +
@@ -2448,13 +2619,23 @@
           '<button class="primary full">Simpan dugaan</button>' +
         '</form>'
       );
+
+      const predSpeech = 'Pertanyaan Cak Roda: ' + m.q + ' Pilihan dugaan: ' +
+        m.claims.map((c, i) => 'Pilihan ' + (i + 1) + ': ' + c).join(' ') +
+        ' Pilih salah satu dugaan, lalu tuliskan alasanmu.';
+      $('speakPredOptionsBtn').onclick = () => speakText(predSpeech, 'roda', true);
+      $('predictionChoice').onchange = () => {
+        if (sound) speakText('Kamu memilih: ' + m.claims[+$('predictionChoice').value], null);
+      };
+      if (sound) speakText('Sebelum menguji, jawablah pertanyaan Cak Roda: ' + m.q + ' Tekan tombol Bacakan Pilihan jika ingin mendengar semua pilihannya.', 'roda');
+
       $('predictionForm').onsubmit = e => {
         e.preventDefault();
         const reason = $('predictionReason').value.trim();
         if (reason.length < 10) return toast('Tuliskan alasan sedikit lebih lengkap.');
         const idx = +$('predictionChoice').value;
         game.prediction = {
-          choice: spec().claims[idx],
+          choice: m.claims[idx],
           index: idx,
           reason
         };
@@ -2463,6 +2644,7 @@
         closeModal();
         renderTrials();
         $('liveResult').textContent = 'Prediksi tersimpan. Ayo menguji!';
+        if (sound) speakText('Prediksi tersimpan. Sekarang tekan tombol Uji geraknya untuk mencoba lintasan!', 'win');
       };
     }
 
@@ -2565,7 +2747,7 @@
         ctx.strokeRect(x0 + m.target[0] * scale, 250, (m.target[1] - m.target[0]) * scale, 126);
         ctx.setLineDash([]);
         ctx.fillStyle = '#81510d';
-        ctx.font = 'bold 18px Arial';
+        ctx.font = 'bold 18px Nunito, Arial';
         ctx.fillText('ZONA SASARAN', x0 + m.target[0] * scale - 24, 236);
       }
 
@@ -2573,7 +2755,7 @@
       ctx.fillRect(0, 376, w, 94);
       ctx.strokeStyle = '#43685b';
       ctx.fillStyle = '#345b50';
-      ctx.font = '16px Arial';
+      ctx.font = 'bold 16px Nunito, Arial';
       ctx.textAlign = 'center';
       for (let i = 0; i <= 15; i++) {
         const x = x0 + i * scale;
@@ -2653,7 +2835,7 @@
       }
       ctx.restore();
       ctx.fillStyle = '#174f43';
-      ctx.font = 'bold 19px Arial';
+      ctx.font = 'bold 20px Nunito, Arial';
       ctx.fillText(distance.toFixed(2) + ' m', Math.min(870, x - 20), game.arena === 'mobil' ? 241 : 270);
       lastDraw = { distance, t, sim };
     }
@@ -2689,8 +2871,12 @@
       $('replayButton').disabled = false;
       const m = spec();
       const hit = m.target && trial.distance >= m.target[0] && trial.distance <= m.target[1];
-      $('liveResult').textContent = 'Uji #' + trial.number + ': ' + trial.distance.toFixed(2) + ' m' + (hit ? ' — masuk zona!' : ' — tercatat.');
+      const resMsg = 'Uji #' + trial.number + ': ' + trial.distance.toFixed(2) + ' m' + (hit ? ' — masuk zona!' : ' — tercatat.');
+      $('liveResult').textContent = resMsg;
       if (hit) playSound(true);
+      if (sound && !programRunning) {
+        speakText('Uji nomor ' + trial.number + ' pada ' + SURF[trial.surface].name + ' berhenti di jarak ' + trial.distance.toFixed(2) + ' meter.' + (hit ? ' Hebat, berhasil masuk zona sasaran!' : ''), hit ? 'win' : null);
+      }
       flush();
     }
 
@@ -2722,13 +2908,18 @@
     function conclude() {
       if (animating || programRunning) return;
       if (!ready()) {
-        toast('Lengkapi prediksi, jumlah uji, dan syarat pengujian pada panel misi.');
+        const msg = 'Lengkapi prediksi, jumlah uji, dan syarat pengujian pada panel misi terlebih dahulu.';
+        toast(msg);
+        if (sound) speakText(msg, 'roda');
         return;
       }
       const m = spec();
       modal(
-        '<h2 id="modalTitle">Buktiku, penjelasanku</h2>' +
-        '<p>' + esc(m.q) + '</p>' +
+        '<div class="row between">' +
+          '<h2 id="modalTitle" style="margin:0">Buktiku, penjelasanku</h2>' +
+          '<button type="button" class="tts-btn" id="speakConcludeGuideBtn">🔊 Bacakan Pilihan</button>' +
+        '</div>' +
+        '<p style="margin-top:10px;font-weight:700">' + esc(m.q) + '</p>' +
         '<form id="reflectionForm">' +
           '<div class="field">' +
             '<label for="claim">Kesimpulan yang paling sesuai</label>' +
@@ -2755,6 +2946,14 @@
           '<button class="primary full" id="finishMission">Simpan penjelasan →</button>' +
         '</form>'
       );
+
+      const concludeSpeech = 'Saatnya menarik kesimpulan! Pertanyaan Cak Roda: ' + m.q + ' Pilihan kesimpulan: ' +
+        m.claims.map((c, i) => 'Pilihan ' + (i + 1) + ': ' + c).join(' ') +
+        ' Pilih kesimpulan yang sesuai dengan bukti percobaanmu.';
+      $('speakConcludeGuideBtn').onclick = () => speakText(concludeSpeech, 'roda', true);
+      $('claim').onchange = () => {
+        if (sound) speakText('Kamu memilih kesimpulan: ' + m.claims[+$('claim').value], null);
+      };
 
       ensureV2();
       const draft = game.draft.reason ? game.draft : (game.answer || {});
@@ -2806,6 +3005,9 @@
 
     function result(answer) {
       const correct = answer.claimIndex === spec().correct;
+      const resultMsg = correct
+        ? 'Misi tuntas, rek! Pilihan kesimpulanmu sesuai dengan model permainan.'
+        : 'Jejakmu lengkap. Mari periksa lagi! Pilihan kesimpulanmu belum sesuai dengan hasil model.';
       modal(
         '<div class="result-hero">' +
           sprite('badge') +
@@ -2825,6 +3027,7 @@
         '</div>' +
         '<p class="smalltext muted" style="margin-top:15px">Periksa status sinkronisasi sebelum menutup halaman.</p>'
       );
+      if (sound) speakText(resultMsg, correct ? 'win' : 'roda');
       $('nextMission').onclick = () => {
         closeModal();
         if (game.mission < 6) openMission(game.mission + 1);
@@ -2852,14 +3055,14 @@
     }
 
     /* =========================================================
-       BAGIAN 8: RUANG GURU & DASBOR PENGELOLA
+       BAGIAN 9: RUANG GURU & DASBOR PENGELOLA
        ========================================================= */
     function teacherGuide() {
       modal(
         '<h2 id="modalTitle">Ruang guru</h2>' +
         '<p>Gunakan satu HP per anak/kelompok atau proyeksikan bersama. Pemain cukup mengisi nama atau nama panggilan serta asal sekolah. Gunakan penulisan yang sama saat kembali bermain.</p>' +
         '<div class="tutorial-list">' +
-          '<div class="tutorial-item"><b>1</b><span>Mulai dengan prediksi individu. Guru dapat membacakan instruksi tanpa memberikan jawabannya.</span></div>' +
+          '<div class="tutorial-item"><b>1</b><span>Mulai dengan prediksi individu. Siswa yang kesulitan membaca dapat menekan tombol <b>🔊 Dengarkan</b> di setiap bagian.</span></div>' +
           '<div class="tutorial-item"><b>2</b><span>Diskusikan faktor yang diubah dan dibuat tetap. Bandingkan sedikitnya dua hasil.</span></div>' +
           '<div class="tutorial-item"><b>3</b><span>Minta penjelasan lisan/tulis. Bintang otomatis menunjukkan kelengkapan proses, bukan mutu semua alasan.</span></div>' +
         '</div>' +
@@ -2896,10 +3099,9 @@
 
       modal(
         '<h2 id="modalTitle">Bahan pendampingan AI untuk guru</h2>' +
-        '<p>Salin bahan ini ke layanan AI pilihan guru bila diperlukan. Tinjau dan hapus informasi pribadi sebelum mengirim. Pada versi ini, dialog Cak Roda dapat mengirim konteks yang disamarkan ke API jika diaktifkan pengelola. Fitur salin ini tetap merupakan pilihan manual.</p>' +
+        '<p>Salin bahan ini ke layanan AI pilihan guru bila diperlukan. Tinjau dan hapus informasi pribadi sebelum mengirim.</p>' +
         '<textarea id="promptText" style="height:240px" readonly></textarea>' +
-        '<button class="primary" id="copyPrompt" style="margin-top:12px">Salin prompt</button>' +
-        '<p class="smalltext muted" style="margin-top:12px">Simpan keluaran AI, keputusan guru, dan tindak lanjut murid sebagai bukti pendampingan. Keluaran harus diperiksa terhadap data dan model permainan.</p>',
+        '<button class="primary" id="copyPrompt" style="margin-top:12px">Salin prompt</button>',
         true
       );
       $('promptText').value = text;
@@ -3099,7 +3301,7 @@
     };
 
     /* =========================================================
-       BAGIAN 9: KODING VISUAL MURID (INTERPRETER BLOK)
+       BAGIAN 10: KODING VISUAL MURID (DENGAN SUARA PERINTAH)
        ========================================================= */
     let programRunning = false, programStop = false, rodaBusy = false, rodaHost = null;
     const BLOCKS = {
@@ -3111,6 +3313,14 @@
       if_long: 'Jika melewati zona, kurangi 5',
       compare: 'Bandingkan hasil'
     };
+
+    function describeBlockSpeech(b, index) {
+      const num = 'Kartu nomor ' + (index + 1) + ': ';
+      if (!b || b.op === 'choose') return num + 'Belum dipilih perintahnya.';
+      if (b.op === 'surface') return num + 'Pilih permukaan ' + (SURF[b.value]?.name || b.value) + '.';
+      if (b.op === 'power') return num + BLOCKS.power + ' menjadi ' + b.value + '.';
+      return num + BLOCKS[b.op] + '.';
+    }
 
     function ensureV2() {
       game.program = game.program || [{ op: 'choose', value: '' }];
@@ -3144,6 +3354,7 @@
             blockValues(b, i) +
           '</div>' +
           '<div class="block-tools">' +
+            '<button class="small ghost" data-speak-block="' + i + '" title="Dengarkan perintah kartu ini" aria-label="Bacakan kartu ' + (i + 1) + '">🔊</button>' +
             '<button class="small ghost" data-move="' + i + '" data-dir="-1" aria-label="Naikkan kartu ' + (i + 1) + '">↑</button>' +
             '<button class="small ghost" data-move="' + i + '" data-dir="1" aria-label="Turunkan kartu ' + (i + 1) + '">↓</button>' +
             '<button class="small outline" data-delete="' + i + '" aria-label="Hapus kartu ' + (i + 1) + '">×</button>' +
@@ -3151,16 +3362,29 @@
         '</div>'
       ).join('');
 
-      $('programBlocks').querySelectorAll('[data-op]').forEach(el => el.onchange = () => editProgram(() => {
-        game.program[+el.dataset.op] = {
-          op: el.value,
-          value: el.value === 'surface' ? 'papan' : (el.value === 'power' ? 60 : '')
-        };
-      }, 'ganti_perintah'));
+      $('programBlocks').querySelectorAll('[data-speak-block]').forEach(el => el.onclick = () => {
+        const idx = +el.dataset.speakBlock;
+        speakText(describeBlockSpeech(game.program[idx], idx), 'roda', true);
+      });
 
-      $('programBlocks').querySelectorAll('[data-value]').forEach(el => el.onchange = () => editProgram(() => {
-        game.program[+el.dataset.value].value = el.value;
-      }, 'ganti_nilai'));
+      $('programBlocks').querySelectorAll('[data-op]').forEach(el => el.onchange = () => {
+        const idx = +el.dataset.op;
+        editProgram(() => {
+          game.program[idx] = {
+            op: el.value,
+            value: el.value === 'surface' ? 'papan' : (el.value === 'power' ? 60 : '')
+          };
+        }, 'ganti_perintah');
+        if (sound) speakText(describeBlockSpeech(game.program[idx], idx), null);
+      });
+
+      $('programBlocks').querySelectorAll('[data-value]').forEach(el => el.onchange = () => {
+        const idx = +el.dataset.value;
+        editProgram(() => {
+          game.program[idx].value = el.value;
+        }, 'ganti_nilai');
+        if (sound) speakText(describeBlockSpeech(game.program[idx], idx), null);
+      });
 
       $('programBlocks').querySelectorAll('[data-move]').forEach(el => el.onclick = () => editProgram(() => {
         const i = +el.dataset.move, j = i + (+el.dataset.dir);
@@ -3203,9 +3427,11 @@
         game.program = list;
         game.programMode = mode;
       }, 'template_' + mode);
-      $('programMessage').textContent = mode === 'debug'
+      const msg = mode === 'debug'
         ? 'Misi debug: perbaiki program agar dapat membandingkan dua permukaan secara adil. Cari perintah yang perlu diubah.'
         : 'Ubah kartu, susun urutannya, lalu jalankan. Perintahmu mengendalikan gerak benda.';
+      $('programMessage').textContent = msg;
+      if (sound) speakText(msg, 'roda');
     }
 
     function lockProgramUI() {
@@ -3226,7 +3452,10 @@
       }
       ensureV2();
       if (!game.program.length || game.program.some(b => b.op === 'choose')) {
-        return toast('Isi semua kartu perintah terlebih dahulu.');
+        const msg = 'Isi semua kartu perintah terlebih dahulu.';
+        toast(msg);
+        if (sound) speakText(msg, 'roda');
+        return;
       }
       if (game.program.some(b => ['if_short', 'if_long'].includes(b.op)) && !spec().target) {
         return toast('Perintah jika dipakai pada misi 3 atau 6 yang memiliki zona sasaran.');
@@ -3312,16 +3541,18 @@
         saveGame();
         lockProgramUI();
         $('programBlocks').querySelectorAll('.code-block').forEach(x => x.classList.remove('executing'));
-        $('programMessage').textContent = completed
-          ? 'Program selesai. Periksa hasil, lalu jelaskan apakah pengujiannya sudah adil.'
+        const finishMsg = completed
+          ? 'Program selesai dijalankan. Periksa hasilnya pada tabel percobaan.'
           : 'Program berhenti. Perbaiki kartu yang diperlukan, kemudian coba lagi.';
+        $('programMessage').textContent = finishMsg;
+        if (sound) speakText(finishMsg, completed ? 'win' : 'roda');
         renderTrials();
         flush();
       }
     }
 
     /* =========================================================
-       BAGIAN 10: CAK RODA (PENDAMPING AI & PETUNJUK TERPROGRAM)
+       BAGIAN 11: CAK RODA (PERTANYAAN & DISKUSI BERSUARA)
        ========================================================= */
     const STAGES = {
       misi: 'Memahami misi',
@@ -3335,7 +3566,10 @@
 
     function rodaMarkup(stage, inline = false) {
       return '<div class="roda-panel" data-stage="' + stage + '">' +
-        '<div class="buddy">' + sprite('buddy') + '<div><b>Cak Roda</b><div class="smalltext muted">' + STAGES[stage] + '</div></div></div>' +
+        '<div class="row between">' +
+          '<div class="buddy">' + sprite('buddy') + '<div><b>Cak Roda</b><div class="smalltext muted">' + STAGES[stage] + '</div></div></div>' +
+          '<button type="button" class="tts-btn" id="rodaSpeakLast">🔊 Dengarkan Cak Roda</button>' +
+        '</div>' +
         '<div id="rodaThread" class="roda-thread" aria-live="polite"></div>' +
         '<label class="label" for="rodaText">' + (inline ? 'Pertanyaan tambahan (boleh kosong)' : 'Apa yang ingin kamu diskusikan?') + '</label>' +
         '<textarea id="rodaText" maxlength="600" placeholder="Ceritakan bagian yang ingin kamu periksa…"></textarea>' +
@@ -3367,8 +3601,21 @@
       $('rodaSend').onclick = () => askRoda(stage, inline);
       $('rodaHint').onclick = () => {
         event('hint', { stage });
-        $('rodaState').textContent = 'Petunjuk terprogram: ' + spec().hint;
+        const hText = 'Petunjuk Cak Roda: ' + spec().hint;
+        $('rodaState').textContent = hText;
+        speakText(hText, 'roda', true);
       };
+      if ($('rodaSpeakLast')) {
+        $('rodaSpeakLast').onclick = () => {
+          const chats = game.chats[stage] || [];
+          const last = [...chats].reverse().find(x => x.role === 'assistant');
+          if (last) {
+            speakText('Kata Cak Roda: ' + last.text, 'roda', true);
+          } else {
+            speakText('Halo! Kita sedang di tahap ' + STAGES[stage] + '. Petunjuk singkat: ' + spec().hint, 'roda', true);
+          }
+        };
+      }
       $('rodaSaveJudgment').onclick = () => {
         const reason = $('rodaReason').value.trim();
         if (reason.length < 5) return toast('Tuliskan alasan atau bukti yang kamu gunakan.');
@@ -3401,12 +3648,21 @@
     function paintRoda() {
       if (!$('rodaThread') || !rodaHost) return;
       const chats = game.chats[rodaHost.stage] || [];
-      $('rodaThread').innerHTML = chats.map(x =>
+      $('rodaThread').innerHTML = chats.map((x, idx) =>
         '<div class="roda-bubble ' + (x.role === 'user' ? 'mine' : '') + '">' +
-          '<b>' + esc(x.role === 'user' ? 'Tulisan / pertanyaanmu' : (x.source === 'ai' ? 'Cak Roda · AI' : 'Cak Roda · petunjuk terprogram')) + '</b>' +
+          '<div class="row between">' +
+            '<b>' + esc(x.role === 'user' ? 'Tulisan / pertanyaanmu' : (x.source === 'ai' ? 'Cak Roda · AI' : 'Cak Roda · petunjuk terprogram')) + '</b>' +
+            (x.role === 'assistant' ? '<button type="button" class="tts-btn" data-roda-idx="' + idx + '">🔊 Bacakan</button>' : '') +
+          '</div>' +
           '<p>' + esc(x.text) + '</p>' +
         '</div>'
       ).join('');
+      $('rodaThread').querySelectorAll('[data-roda-idx]').forEach(btn => {
+        btn.onclick = () => {
+          const item = chats[+btn.dataset.rodaIdx];
+          if (item) speakText(item.text, 'roda', true);
+        };
+      });
       $('rodaThread').scrollTop = $('rodaThread').scrollHeight;
       $('rodaJudge').classList.toggle('hidden', !chats.some(x => x.role === 'assistant'));
     }
@@ -3417,6 +3673,9 @@
       ensureV2();
       modal('<h2 id="modalTitle">Yuk, diskusikan idemu</h2>' + rodaMarkup(stage), true);
       initRoda(stage);
+      if (sound) {
+        speakText('Yuk diskusikan idemu bersama Cak Roda pada tahap ' + STAGES[stage] + '. ' + spec().hint, 'roda');
+      }
     }
 
     function saveDraft() {
@@ -3478,9 +3737,10 @@
           r = await call();
         }
         if (r.pending) throw new Error('Respons masih diproses. Kirim ulang permintaan yang sama beberapa saat lagi.');
+        const fullReply = r.message + '\n' + r.question;
         chats.push({
           role: 'assistant',
-          text: r.message + '\n' + r.question,
+          text: fullReply,
           source: r.source,
           category: r.category,
           requestId: r.requestId,
@@ -3494,6 +3754,7 @@
           $('rodaSend').textContent = inline ? 'Periksa tulisanku' : 'Diskusikan dengan Cak Roda';
           $('rodaSend').onclick = () => askRoda(stage, inline);
         }
+        if (sound) speakText(fullReply, 'roda');
       } catch (e) {
         if ($('rodaState')) {
           $('rodaState').textContent = 'Belum tersambung: ' + e.message + ' Kamu tetap boleh menulis dan menyimpan jawaban.';
@@ -3518,11 +3779,13 @@
           ensureV2();
           renderProgram();
           panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (sound) speakText('Panel susun kode dolanan terbuka. Pilih perintah pada setiap kartu, lalu tekan tombol Jalankan kode.', 'greet');
         }
       };
       $('addBlock').onclick = () => {
         if (game.program.length >= 20) return toast('Maksimal 20 kartu dalam satu program.');
         editProgram(() => game.program.push({ op: 'choose', value: '' }), 'tambah');
+        if (sound) speakText('Kartu baru ditambahkan.', null);
       };
       $('templateExample').onclick = () => templateProgram('example');
       $('templateBlank').onclick = () => templateProgram('blank');
@@ -3563,7 +3826,7 @@
     }
 
     /* =========================================================
-       BAGIAN 11: FESTIVAL CAKRA, PAPAN MIRING, & JEMBATAN KIT FISIK
+       BAGIAN 12: FESTIVAL CAKRA, PAPAN MIRING, & JEMBATAN KIT FISIK
        ========================================================= */
     function renderJourney() {
       if (!$('journey')) return;
@@ -3601,8 +3864,12 @@
         $('missionDesc').textContent = s.goal;
         $('storyCard').innerHTML = sprite('buddy') +
           `<div><div class="eyebrow">${s.place} • ${s.person}</div><p>${s.story}</p></div>` +
-          `<button id="kitLink" class="sun small">Hubungkan dengan kit</button>`;
+          `<div class="story-actions">` +
+            `<button id="speakStoryBtn" type="button" class="tts-btn">🔊 Dengarkan Cerita</button>` +
+            `<button id="kitLink" type="button" class="sun small">Hubungkan dengan kit</button>` +
+          `</div>`;
         $('kitLink').onclick = kitBridge;
+        $('speakStoryBtn').onclick = () => speakText(s.place + ', bersama ' + s.person + '. ' + s.story + ' Tujuanmu: ' + s.goal, 'greet', true);
       }
       renderProgram();
       deliveryStatus();
@@ -3644,7 +3911,7 @@
           '<li>Ulangi tiap kondisi dan catat gangguan atau mobil yang mencapai batas arena.</li>' +
           '<li>Bandingkan pola hasil kit dengan simulasi, lalu jelaskan perbedaannya.</li>' +
         '</ol>' +
-        '<p class="notice">Skala permainan bukan ukuran kit. Jangan meninggikan kit menjadi 100 cm. Gunakan batas aman rancangan kit dan pendampingan guru. Data fisik dicatat terpisah pada kartu misi; aplikasi ini belum menerima pengukuran fisik.</p>'
+        '<p class="notice">Skala permainan bukan ukuran kit. Jangan meninggikan kit menjadi 100 cm. Gunakan batas aman rancangan kit dan pendampingan guru.</p>'
       );
     }
 
@@ -3788,13 +4055,13 @@
         x.strokeRect(start + m.target[0] * scale, 270, (m.target[1] - m.target[0]) * scale, 100);
         x.setLineDash([]);
         x.fillStyle = '#80500c';
-        x.font = 'bold 17px Arial';
+        x.font = 'bold 17px Nunito, Arial';
         x.fillText('TUJUAN', start + m.target[0] * scale + 5, 260);
       }
 
       x.fillStyle = '#fff4da';
       x.fillRect(0, 372, W, 98);
-      x.font = '16px Arial';
+      x.font = 'bold 16px Nunito, Arial';
       x.fillStyle = '#315b4c';
       x.textAlign = 'center';
       for (let i = 0; i <= 8; i++) {
@@ -3809,7 +4076,7 @@
         const tx = start + q.distance * scale;
         x.fillStyle = '#235d4a66';
         x.fillRect(tx, 316, 2, 42);
-        x.font = '12px Arial';
+        x.font = 'bold 12px Nunito, Arial';
         x.fillText('#' + q.number, tx + 3, 354);
       }
 
@@ -3860,16 +4127,16 @@
       x.restore();
 
       x.fillStyle = '#214f43';
-      x.font = 'bold 17px Arial';
+      x.font = 'bold 17px Nunito, Arial';
       x.fillText('Tinggi: ' + p + ' cm', 24, 420);
-      x.font = '14px Arial';
+      x.font = '14px Nunito, Arial';
       x.fillText('Skala model', 24, 443);
       x.fillStyle = '#fffbeb';
-      x.fillRect(16, 252, 150, 31);
+      x.fillRect(16, 252, 165, 31);
       x.fillStyle = '#315747';
       x.fillText('Lepas tanpa dorongan', 24, 273);
       if (trial && phase === null) {
-        x.font = 'bold 19px Arial';
+        x.font = 'bold 20px Nunito, Arial';
         x.fillText(distance.toFixed(2) + ' m', Math.min(900, cx - 20), cy - 72);
       }
       lastDraw = { distance, t, sim: trial };
@@ -3976,7 +4243,7 @@
     }
 
     /* =========================================================
-       BAGIAN 12: RAPOR PERCOBAAN (CETAK PDF & WORD .DOCX LOKAL)
+       BAGIAN 13: RAPOR PERCOBAAN (CETAK PDF & WORD .DOCX LOKAL)
        ========================================================= */
     let reportItems = [], reportRequest = 0;
 
@@ -4413,7 +4680,7 @@
     }
 
     /* =========================================================
-       BAGIAN 13: INISIALISASI EVENT & PENGHUBUNG TOMBOL
+       BAGIAN 14: INISIALISASI EVENT & TOMBOL SUARA (TTS)
        ========================================================= */
     $('brandIcon').innerHTML = sprite('gate');
     $('marbleIcon').innerHTML = sprite('marble');
@@ -4422,6 +4689,63 @@
     $('buddyIcon').innerHTML = sprite('buddy');
     $('heroArt').innerHTML = village(true) + '<div class="float-tag">Berani menduga. Jujur pada bukti.</div>';
     $('villageMap').insertAdjacentHTML('afterbegin', village(false));
+
+    // Event Tombol Suara Salam, Pertanyaan Cak Roda, & Menu Perintah
+    $('speakWelcomeBtn').onclick = () => {
+      speakText(
+        'Halo teman-teman! Selamat datang di Kampung Dolanan Sains. Festival kampung butuh idemu! Bantu warga mengantar perlengkapan dengan mobil dolanan. Tekan tombol hijau Ayo masuk kampung untuk mulai bermain!',
+        'greet',
+        true
+      );
+    };
+
+    $('speakMapBtn').onclick = () => {
+      speakText(
+        'Mau dolanan di mana? Pilih Kelereng Kampung untuk menyentil dan mengamati kelereng, atau pilih Mobil Dolanan untuk menguji gerak mobil di lintasan papan miring.',
+        'greet',
+        true
+      );
+    };
+
+    $('speakHomeBuddyBtn').onclick = () => {
+      speakText('Pesan Cak Roda: ' + $('homeBuddyQuote').textContent, 'roda', true);
+    };
+
+    $('speakMissionIntroBtn').onclick = () => {
+      const m = spec();
+      speakText(
+        'Misi ' + game.mission + ': ' + title(m) + '. ' + $('missionDesc').textContent + ' Pertanyaan Cak Roda: ' + m.q,
+        'greet',
+        true
+      );
+    };
+
+    $('speakCakRodaQuestionBtn').onclick = () => {
+      const m = spec();
+      const tasks = [...$('requirements').querySelectorAll('li')].map(li => li.textContent.replace(/[✓○]/g, '')).join('. ');
+      speakText(
+        'Pertanyaan Cak Roda: ' + m.q + ' Tugas yang perlu kamu lengkapi: ' + tasks + '. Petunjuk singkat: ' + m.hint,
+        'roda',
+        true
+      );
+    };
+
+    $('speakControlsBtn').onclick = () => {
+      const forceLabel = game.arena === 'mobil' ? 'tinggi pelepasan mobil dalam sentimeter' : 'kekuatan sentilan kelereng';
+      speakText(
+        'Panduan menu perintah: Geser pengatur untuk mengubah ' + forceLabel + ', saat ini bernilai ' + game.power + '. ' +
+        'Pilih permukaan lintasan antara Ubin halus, Papan kayu, atau Karpet kasar, saat ini terpilih ' + SURF[game.surface].name + '. ' +
+        'Tekan tombol Tulis prediksi terlebih dahulu, lalu tekan tombol hijau untuk menguji geraknya!',
+        'greet',
+        true
+      );
+    };
+
+    $('speakProgramBtn').onclick = () => {
+      ensureV2();
+      const stepsText = game.program.map((b, idx) => describeBlockSpeech(b, idx)).join(' ');
+      speakText('Urutan kode dolananmu saat ini. ' + stepsText, 'roda', true);
+    };
 
     $('startButton').onclick = () => enterArena('mobil');
     $('profileButton').onclick = () => login();
@@ -4443,9 +4767,13 @@
 
     $('navSound').onclick = () => {
       sound = !sound;
-      $('navSound').textContent = 'Suara: ' + (sound ? 'aktif' : 'mati');
+      $('navSound').textContent = (sound ? '🔊 Suara: aktif' : '🔇 Suara: mati');
       $('navSound').setAttribute('aria-pressed', String(sound));
-      if (sound) playSound();
+      if (sound) {
+        speakText('Suara pembaca teks diaktifkan.', 'greet', true);
+      } else {
+        stopSpeech();
+      }
     };
 
     $('syncButton').onclick = () => flush(true);
@@ -4465,6 +4793,9 @@
       event('setting', { field: 'power', from: previous, to: game.power });
       saveGame();
       draw(0);
+      if (sound) {
+        speakText((game.arena === 'mobil' ? 'Tinggi pelepasan diatur ke ' + game.power + ' sentimeter.' : 'Sentilan diatur ke ' + game.power + '.'), null);
+      }
     };
 
     $('surface').onchange = () => {
@@ -4473,6 +4804,9 @@
       event('setting', { field: 'surface', from: previous, to: game.surface });
       saveGame();
       draw(0);
+      if (sound) {
+        speakText('Permukaan lintasan diubah menjadi ' + SURF[game.surface].name + '.', null);
+      }
     };
 
     $('replayButton').onclick = async () => {
@@ -4519,6 +4853,7 @@
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
+        stopSpeech();
         if (activeSeconds && session) {
           event('heartbeat', { seconds: activeSeconds });
           activeSeconds = 0;
@@ -4554,6 +4889,7 @@
       runProgram,
       templateProgram,
       openRoda,
+      speakText,
       getGame: () => game,
       getQueue: () => queue,
       flush,
